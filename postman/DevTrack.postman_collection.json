@@ -1,0 +1,456 @@
+{
+  "info": {
+    "name": "DevTrack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000/api"
+    }
+  ],
+  "item": [
+    {
+      "name": "Reporters",
+      "item": [
+        {
+          "name": "Create reporter (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reporters/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reporters",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"name\": \"Asha Rao\",\n  \"email\": \"asha@devtrack.io\",\n  \"team\": \"backend\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create reporter - invalid email (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reporters/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reporters",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ravi\",\n  \"email\": \"ravi.devtrack.io\",\n  \"team\": \"frontend\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all reporters",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reporters/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reporters",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get reporter by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reporters/?id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reporters",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get reporter - not found (404)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reporters/?id=99",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reporters",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "99"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Issues",
+      "item": [
+        {
+          "name": "Create critical issue (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"title\": \"Login button not working on mobile\",\n  \"description\": \"Users on iOS 17 cannot tap the login button\",\n  \"status\": \"open\",\n  \"priority\": \"critical\",\n  \"reporter_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create low issue (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"\",\n  \"status\": \"in_progress\",\n  \"reporter_id\": 1,\n  \"title\": \"Typo on pricing page\",\n  \"priority\": \"low\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create high issue (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"\",\n  \"status\": \"open\",\n  \"reporter_id\": 1,\n  \"title\": \"Dashboard takes 8s to load\",\n  \"priority\": \"high\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create issue - empty title (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"\",\n  \"status\": \"open\",\n  \"reporter_id\": 1,\n  \"title\": \"\",\n  \"priority\": \"medium\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create issue - invalid priority (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"\",\n  \"status\": \"open\",\n  \"reporter_id\": 1,\n  \"title\": \"Broken link\",\n  \"priority\": \"urgent\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create issue - unknown reporter (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"\",\n  \"status\": \"open\",\n  \"reporter_id\": 42,\n  \"title\": \"Broken link\",\n  \"priority\": \"low\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all issues",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get issue by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/?id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get issue - not found (404)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/?id=99",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "99"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter issues by status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/issues/?status=open",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "open"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
